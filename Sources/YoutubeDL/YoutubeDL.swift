@@ -125,6 +125,21 @@ public struct Format: Codable {
     public var format: String
     public var resolution: String?
     public var http_headers: [String: String]
+    
+    func getTiktokChainToken() -> String? {
+        guard let cookies = cookies else { return nil }
+        
+        if let tokenPart = cookies
+            .components(separatedBy: ";")
+            .first(where: { $0.contains("tt_chain_token=") }) {
+            
+            return tokenPart
+                .replacingOccurrences(of: "tt_chain_token=", with: "")
+                .replacingOccurrences(of: "\"", with: "")
+                .trimmingCharacters(in: .whitespaces)
+        }
+        return nil
+    }
 }
 
 let chunkSize: Int64 = 10_485_760 // https://github.com/yt-dlp/yt-dlp/blob/720c309932ea6724223d0a6b7781a0e92a74262c/yt_dlp/extractor/youtube.py#L2552
