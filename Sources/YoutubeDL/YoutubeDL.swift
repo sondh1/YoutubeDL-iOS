@@ -111,6 +111,7 @@ public struct Format: Codable {
     public var dynamic_range: String?
     public var abr: Double?
     public var vbr: Double?
+    public var tt_chain_token: String?
     
     public struct DownloaderOptions: Codable {
         public var http_chunk_size: Int
