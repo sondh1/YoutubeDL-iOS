@@ -126,7 +126,7 @@ public struct Format: Codable {
     public var resolution: String?
     public var http_headers: [String: String]
     
-    func getTiktokChainToken() -> String? {
+    public func getTiktokChainToken() -> String? {
         guard let cookies = cookies else { return nil }
         
         if let tokenPart = cookies
